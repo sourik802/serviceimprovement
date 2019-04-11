@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="../layout.xhtml">
+    <ui:define name="content">
+        <h3 style="margin-top:0">Activate/Deactivate Inventory</h3>
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-12 ui-md-4">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+                    <p:message for="inv-bid" showSummary="false" />
+                    <p:inputText id="inv-bid" placeholder="Inventory BID" value="#{invMgrController.invBid}" required="true" requiredMessage="Enter Inventory BID"/>
+                </div>
+                <div class="ui-g-12">
+                    <div class="ui-inputgroup">
+                        <p:message for="act-option" showSummary="false"/>
+                        <p:selectOneButton id="act-option" value="#{invMgrController.activationOption}" required="true" requiredMessage="Select Activate or Deactivate Option">
+                            <f:selectItem itemLabel="Activate" itemValue="T"/>
+                            <f:selectItem itemLabel="Deactivate" itemValue="F"/>
+                        </p:selectOneButton>
+                    </div>
+                </div>
+                <p:commandButton value="Submit" ajax="false" actionListener="#{invMgrController.validate}" action="#{invMgrController.activationAction}" validateClient="true" />
+            </div>
+
+            <h:outputLink id="openDialogLink" value="javascript:void(0)" onclick="PF('activateUpldDlg').show();">Upload excel to activate/deactivate</h:outputLink>
+            <p:dialog id="activateUpldDlg" widgetVar="activateUpldDlg" header="Upload inventories to Activate/Deactivate" resizable="false">
+                <p:fileUpload value="#{invMgrController.uploadFile}" mode="simple"/>
+                <p:commandButton value="Upload" ajax="false" action="#{invMgrController.upload}"/>
+            </p:dialog>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

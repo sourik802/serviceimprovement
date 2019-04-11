@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition>
+    <p:tabView id="tabView" dynamic="true" cache="false">
+        <p:ajax event="tabChange" listener="#{mainController.onTabChange}"/>
+        <p:tab title="Inventory Manager">
+            <h:panelGrid columns="1" cellpadding="10">
+                <p:menu toggleable="true">
+                    <p:submenu label="Update Inventory">
+                        <p:menuitem value="Activate/Deactivate Inventory" url="/im/inv-activation.ui"/>
+                        <p:menuitem value="Destroy Inventory"/>
+                    </p:submenu>
+                    <p:submenu label="Create Storage Unit">
+                        <p:menuitem value="Coming soon" url="#"/>
+                    </p:submenu>
+                    <p:submenu label="Update Program">
+                        <p:menuitem value="Coming soon" url="#"/>
+                    </p:submenu>
+                </p:menu>
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Lexicon">
+            <h:panelGrid columns="1" cellpadding="10">
+                <p:menu toggleable="true">
+                    <p:submenu label="Update Inventory">
+                        <p:menuitem value="Activate/Deactivate Inventory"/>
+                        <p:menuitem value="Destroy Inventory"/>
+                    </p:submenu>
+                </p:menu>
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Inventory Import">
+            <h:panelGrid columns="1" cellpadding="10">
+                <p:menu toggleable="true">
+                    <p:submenu label="Update import">
+                        <p:menuitem value="Run batch job"/>
+                    </p:submenu>
+                </p:menu>
+            </h:panelGrid>
+        </p:tab>
+    </p:tabView>
+</ui:composition>
+</html>
